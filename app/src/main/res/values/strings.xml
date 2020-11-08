@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Bazaar Hisab</string>
+
+    <!-- activity_home.xml -->
+    <string name="home_activity_headline">Make your shopping list and maintain your budget easily!</string>
+    <string name="create_list_text">Create list</string>
+
+    <!-- home_activity_toolbar_menu -->
+    <string name="share">Share</string>
+    <string name="about">About</string>
+    <string name="how_to_use">How to use</string>
+
+    <!-- dialog_layout_create_list -->
+    <string name="hint_shopping_list_name">Give your shopping list a name</string>
+
+    <!-- dialog_layout_delete_list_name-->
+    <string name="want_to_delete">Do you want to delete</string>
+    <string name="ques_mark">\?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+</resources>
