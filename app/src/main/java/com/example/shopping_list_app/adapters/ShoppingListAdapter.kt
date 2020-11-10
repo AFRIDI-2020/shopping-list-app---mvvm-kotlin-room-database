@@ -2,6 +2,7 @@ package com.example.shopping_list_app.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,10 @@ import kotlinx.android.synthetic.main.activity_home.view.*
 import kotlinx.android.synthetic.main.dialog_layout_create_list.view.*
 import kotlinx.android.synthetic.main.dialog_layout_delete_list_name.view.*
 import kotlinx.android.synthetic.main.shopping_list_name_preview.view.*
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class ShoppingListAdapter(
     var shoppingLists : List<ShoppingList>, val shoppingListViewModel: ShoppingListViewModel
@@ -62,13 +67,13 @@ class ShoppingListAdapter(
                 builder.setView(view)
                 val dialog : AlertDialog = builder.create()
                 view.et_shopping_list_name.setText(shoppingList.shoppingListName)
-
+                val currentDate :String = shoppingList.date
                 view.tv_create_list_name.setOnClickListener {
                     val shoppingListName: String = view.et_shopping_list_name.text.toString()
                     if(shoppingListName.isEmpty()){
                         return@setOnClickListener
                     }
-                    val newShoppingList = ShoppingList(shoppingListName)
+                    val newShoppingList = ShoppingList(shoppingListName,currentDate)
                     newShoppingList.id = shoppingList.id
                     shoppingListViewModel.upsert(newShoppingList)
                     dialog.dismiss()

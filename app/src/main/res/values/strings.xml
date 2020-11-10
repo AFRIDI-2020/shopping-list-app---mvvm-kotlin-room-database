@@ -18,4 +18,31 @@
     <string name="ques_mark">\?</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+
+    <!-- activity_current_list.xml -->
+    <string name="details">Show details</string>
+    <string name="label_add_new_item">Add new item</string>
+    <string name="hint_item_name">New item name</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="kg">kg</string>
+    <string name="gram">gram</string>
+    <string name="quarter">quarter</string>
+    <string name="liter">liter</string>
+    <string name="ml">ml</string>
+    <string name="piece">piece</string>
+    <string name="dozen">dozen</string>
+    <string name="pair">pair</string>
+    <string name="packet">packet</string>
+    <string name="unit">unit</string>
+    <string name="bag">bag</string>
+    <string name="add_button">Add</string>
+    <string name="serial">S/N</string>
+    <string name="label_item_name">ITEM NAME</string>
+    <string name="label_quantity">QUANTITY</string>
+    <string name="label_date">Date</string>
+    <string name="label_shopping_list_name">Shopping list name</string>
+
+    <!-- activity.details -->
+    <string name="label_budget">Budget</string>
+    <string name="label_balance">Balance</string>
 </resources>

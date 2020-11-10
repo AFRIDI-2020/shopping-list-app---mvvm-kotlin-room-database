@@ -15,4 +15,7 @@ interface ShoppingListDao {
 
     @Query("SELECT * FROM shopping_list ORDER BY id DESC")
     fun getAllShoppingListName() : LiveData<List<ShoppingList>>
+
+    @Query("SELECT * FROM shopping_list WHERE id LIKE :id")
+    fun getListNameDate(id : Int) : LiveData<ShoppingList>
 }

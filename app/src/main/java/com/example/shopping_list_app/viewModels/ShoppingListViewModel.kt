@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopping_list_app.database.shoppingList.ShoppingList
 import com.example.shopping_list_app.repositories.ShoppingListRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ShoppingListViewModel(val shoppingListRepository: ShoppingListRepository) : ViewModel() {
@@ -17,4 +19,10 @@ class ShoppingListViewModel(val shoppingListRepository: ShoppingListRepository) 
     }
 
     fun getAllShoppingListName() = shoppingListRepository.getAllShoppingListName()
+
+    fun getListNameDate(id : Int) = shoppingListRepository.getListNameDate(id)
+
+
+
+
 }

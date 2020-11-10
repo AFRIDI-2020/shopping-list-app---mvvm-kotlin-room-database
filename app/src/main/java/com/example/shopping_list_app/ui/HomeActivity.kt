@@ -1,5 +1,6 @@
 package com.example.shopping_list_app.ui
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -18,12 +19,17 @@ import com.example.shopping_list_app.viewModelFactories.ShoppingListViewModelFac
 import com.example.shopping_list_app.viewModels.ShoppingListViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.dialog_layout_create_list.view.*
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
     lateinit var shoppingListViewModel: ShoppingListViewModel
     lateinit var shoppingListAdapter: ShoppingListAdapter
     lateinit var dialog: AlertDialog
+    var currentDate: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +57,17 @@ class HomeActivity : AppCompatActivity() {
             shoppingListAdapter.notifyDataSetChanged()
         })
 
+        currentDate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val current = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
+            current.format(formatter)
+        } else {
+            var date = Date()
+            val formatter = SimpleDateFormat("dd MMM yyyy")
+            formatter.format(date)
+        }
+
+
         tv_create_list.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             val view = layoutInflater.inflate(R.layout.dialog_layout_create_list, null)
@@ -58,10 +75,10 @@ class HomeActivity : AppCompatActivity() {
             dialog = builder.create()
             view.tv_create_list_name.setOnClickListener {
                 val shoppingListName: String = view.et_shopping_list_name.text.toString()
-                if(shoppingListName.isEmpty()){
+                if (shoppingListName.isEmpty()) {
                     return@setOnClickListener
                 }
-                shoppingListViewModel.upsert(ShoppingList(shoppingListName))
+                shoppingListViewModel.upsert(ShoppingList(shoppingListName, currentDate))
                 dialog.dismiss()
             }
             dialog.show()

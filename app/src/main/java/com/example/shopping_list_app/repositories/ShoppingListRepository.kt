@@ -8,4 +8,5 @@ class ShoppingListRepository(val shoppingListDatabase: ShoppingListDatabase) {
     suspend fun upsert(shoppingList: ShoppingList) = shoppingListDatabase.shoppingListDao().upsert(shoppingList)
     suspend fun delete(shoppingList: ShoppingList) = shoppingListDatabase.shoppingListDao().delete(shoppingList)
     fun getAllShoppingListName() = shoppingListDatabase.shoppingListDao().getAllShoppingListName()
+    fun getListNameDate(id : Int) = shoppingListDatabase.shoppingListDao().getListNameDate(id)
 }
